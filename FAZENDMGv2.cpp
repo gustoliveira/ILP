@@ -1,5 +1,8 @@
 #include <iostream>
 using namespace std;
+int matriz[2000][2000] = {};
+//declarando matriz como variável global apenas
+//por macumba
 
 int main () {
     int x, y, l, c, n;
@@ -9,11 +12,14 @@ int main () {
         if (n == 0) break;
 
         /*
-        Declarando uma matriz com dobro de tamanho para ter margem,
-        e zerando toda ela;
+        Zerando toda a matriz para limpar dos resultados anteriores;
         Area é o área e borda mostrará o perimetro;
         */
-        int matriz[2000][2000] = {0};
+        for (int i = 0; i < 2000; i++){
+            for (int j = 0; j < 2000; j++){
+                matriz[i][j] = 0;
+            }
+        }
         int area = 0, borda = 0;
 
         /*
