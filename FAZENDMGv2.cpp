@@ -8,14 +8,22 @@ int main () {
         cin >> n;
         if (n == 0) break;
 
-        // Declarando variaveis e zerando toda a matriz
+        /*
+        Declarando uma matriz com dobro de tamanho para ter margem,
+        e zerando toda ela;
+        Area é o área e borda mostrará o perimetro;
+        */
         int matriz[2000][2000] = {0};
         int area = 0, borda = 0;
 
-        // ler coordenadas e tamanhos
-        // Atribuir a cada local escolhido o valor 1
-        // Adiciona-se +1 quando coloca na matriz, pra quando olhar as
-        // bordas, não ficar sem contar pois não há zero
+        /*
+        Lendo os valores das coordenadas e dos tamanhos.
+        Cada local, que faz parte do terreno, será representado com '1';
+        Quando o coloca esse '1', as coordenadas (matriz[j+1][k+1]) são
+        somadas uma unidade a mais, para que quando for ler as bordas,
+        não dê nenhum tipo de erro, por este motivo também que a matriz
+        é maior do que o tamanho máximo da questão;
+        */
         for (int i = 0; i < n; i++){
             cin >> x >> y >> l >> c;
             for (int j = x; j < x + l; j++){
@@ -23,10 +31,13 @@ int main () {
             }
         }
 
-        // Somando o valor da área total do terreno,
-        // ou seja, todos os 1
-        // Somando o valor de cada borda, ou seja, cada 1, que é
-        // vizinho de algum 0
+        /*
+        Procura todos os '1' da matriz, e quando acha, adiciona mais 1km2 a
+        area, assim temos a área total
+        Após isso, irá verificar todas as coordenadas em volta do '1'
+        encontrado buscando um '0', caso ache, soma-se mais uma unidade a
+        borda, e assim encontra o perimetro;
+        */
         for (int i = 0; i < 2000; i++){
             for (int j = 0; j < 2000; j++){
                 if (matriz[i][j] == 1) {
