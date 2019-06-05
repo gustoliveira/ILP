@@ -3,7 +3,7 @@ using namespace std;
 
 int main () {
     int soma = 0, linhas, colunas;
-    char mapa[1002][1002];
+    char mapa[1010][1010];
 
     cin >> linhas >> colunas;
 
@@ -11,17 +11,19 @@ int main () {
         for (int j = 0; j < 1002; j++) mapa[i][j] = '.';
     }
 
-    for (int i = 0; i < linhas; i++){
-        for (int j = 0; j < colunas; j++) cin >> mapa[i][j];
+    for (int i = 5; i < linhas+5; i++){
+        for (int j = 5; j < colunas+5; j++) {
+          cin >> mapa[i][j];
+        }
     }
 
-    for (int i = 0; i < linhas; i++){
-        for (int j = 0; j < colunas; j++){
+    for (int i = 0; i < linhas+6; i++){
+        for (int j = 0; j < colunas+6; j++){
             if (mapa[i][j] == '#'){
-                if (mapa[i][j+1] == '.') {soma++; continue;}
-                else if (mapa[i][j-1] == '.') {soma++; continue;}
-                else if (mapa[i+1][j] == '.') {soma++; continue;}
-                else if (mapa[i-1][j] == '.') {soma++; continue;}
+                if (mapa[i][j+1] == '#' && mapa[i][j-1] == '#' && mapa[i+1][j] == '#' && mapa[i-1][j] == '#' && mapa[i][j+1] == '#'){
+                  soma+= 0;
+                }
+                else soma+= 1;
             }
         }
     }
