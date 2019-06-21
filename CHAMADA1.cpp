@@ -7,23 +7,27 @@ int main () {
     string vetor[n];
 
     for (int i = 0; i < n; i++){
-      cin >> vetor[i];
+        cin >> vetor[i];
     }
 
-    int menor;
+    int continuar, fim = n;
     string aux;
-    for(int i = 0; i < n-1; i++) {
-        menor = i;
-        for(int j = i+1; j < n; j++){
-            if(vetor[j] < vetor[menor]){
-                menor = j;
+
+    do{
+        continuar = 0;
+        for (int i = 0; i < fim - 1; i++){
+            if (vetor[i+1] < vetor[i]){
+                aux = vetor[i+1];
+                vetor[i+1] = vetor[i];
+                vetor[i] = aux;
+
+                continuar = 1;
             }
         }
-        aux = vetor[i];
-        vetor[i] = vetor[menor];
-        vetor[menor] = aux;
+        fim--;
     }
+    while (continuar != 0);
 
     cout << vetor[m-1] << endl;
-  return 0;
+    return 0;
 }
