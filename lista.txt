@@ -35,13 +35,11 @@ https://br.spoj.com/problems/SEQUENCI/
     João e o Pé de Feijão
 
 4. Vetores
-    Guerra por Território
     Notas
     Aeroporto
     Pulo do sapo
     Vivo ou Morto
     Número de Envelopes
-    Campo minado
 
 5. Strings
     Vestibular
