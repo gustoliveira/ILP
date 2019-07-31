@@ -1,7 +1,6 @@
 https://br.spoj.com/problems/SEQUENCI/
 
 2. Desvios condicionais
-    Campeonato
     Gangorra
     Tira-teima
     Detectando Colisões
@@ -14,9 +13,7 @@ https://br.spoj.com/problems/SEQUENCI/
     Elevador
 
 3. Laços
-    Soma
     Quermesse
-    Cofrinhos da Vó Vitória
     Elevador
     Fatorial
     Bits Trocados
@@ -35,7 +32,6 @@ https://br.spoj.com/problems/SEQUENCI/
     João e o Pé de Feijão
 
 4. Vetores
-    Notas
     Aeroporto
     Pulo do sapo
     Vivo ou Morto
