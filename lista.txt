@@ -33,7 +33,6 @@ https://br.spoj.com/problems/SEQUENCI/
 
 4. Vetores
     Aeroporto
-    Pulo do sapo
     Vivo ou Morto
     Número de Envelopes
 
