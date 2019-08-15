@@ -1,0 +1,76 @@
+https://br.spoj.com/problems/SEQUENCI/
+
+2. Desvios condicionais
+    Gangorra
+    Tira-teima
+    Detectando Colisões
+    Frota de Táxi
+    Carnaval
+    Álbum de Fotos
+    Distância de Manhattan
+    Insensibilidade
+    Saldo do Vovô
+    Elevador
+
+3. Laços
+    Quermesse
+    Elevador
+    Fatorial
+    Bits Trocados
+    Primo
+    Garçom
+    Tacógrafo
+    Telescópio
+    Saldo de gols
+    O Tabuleiro Esburacado
+    Compra de Dadinhos
+    Ajude Aparecido
+    O fugitivo
+    Poodle
+    Insensibilidade
+    Bactérias
+    João e o Pé de Feijão
+
+4. Vetores
+    Aeroporto
+    Vivo ou Morto
+    Número de Envelopes
+
+5. Strings
+    Vestibular
+    Telefone
+    Língua do P
+    Letras
+    Você pode dizer 11
+    Quem vai ser reprovado
+    Proteja sua senha
+    Auto Estrada
+    Senha da Tia
+    Par ou ímpar
+    Palavras Ordenadas
+
+6. Matrizes
+    Chuva
+    Campo de Minhocas
+    Costa
+    PacMan
+    Robô colecionador
+    Sudoku
+    Logotipo publicitário na TV da Vovó
+
+7. Ordenação
+    Fliperama
+    Corrida
+    Chamada
+    Tetris
+    Olimpíadas
+    Supermercado
+    Balé ***desafio***
+
+8. Busca
+    Tiro ao Alvo
+    Carteiro
+    Número Proibido
+
+9. Recursão
+    Rumo aos 9s
