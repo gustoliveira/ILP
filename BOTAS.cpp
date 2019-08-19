@@ -1,31 +1,35 @@
-//Não passou no SPOJ
-//Passou no URI
-
 #include <iostream>
+#include <vector>
 using namespace std;
 
-int main (){
-    int n, tam;
+typedef struct botas tipo;
+struct botas {
+    int tam;
     char lado;
+};
 
-    while (cin>>n) {
-        int tans[n] = {}, soma = 0;
-        char lados[n] = {};
-        for (int i = 0; i < n; i++){
-            cin >> tam >> lado;
-            tans[i] = tam;
-            lados[i] = lado;
+int main(){
+    int n;
+
+    while(cin >> n){
+        vector<tipo> vetor;
+        tipo aux;
+        int soma = 0;
+
+        for(int i = 0; i < n; i++){
+            cin >> aux.tam >> aux.lado;
+            vetor.push_back(aux);
         }
 
-        for (int i = 0; i < n; i++){
-            for (int j = 0; j < n; j++){
-                if (tans[i] != 0 && tans[j] != 0 && lados[i] != 'O' && lados[j] != 'O'){
-                    if (tans[i] == tans[j] && lados[i] != lados[j]){
-                        soma++;
-                        tans[i] = 0;
-                        tans[j] = 0;
-                        lados[i] = 'O';
-                        lados[j] = 'O';
+        for(int i = 0; i < n; i++){
+            for(int j = 0; j < n; j++){
+                if(vetor[i].tam != 0 && vetor[i].tam != 0 && vetor[i].lado != 'C' && vetor[j].lado != 'C'){
+                    if((vetor[i].tam == vetor[j].tam) && (vetor[i].lado != vetor[j].lado)){
+                        ++soma;
+                        vetor[i].lado = 'C';
+                        vetor[j].lado = 'C';
+                        vetor[i].tam = 0;
+                        vetor[j].tam = 0;
                     }
                 }
             }
