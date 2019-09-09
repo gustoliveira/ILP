@@ -3,7 +3,7 @@
 #include <string.h>
 
 typedef struct pilha pilha;
-typedef struct fila fila;
+typedef struct lista lista;
 typedef struct no no;
 
 struct no{
@@ -16,7 +16,7 @@ struct pilha{
     no *topo;
 };
 
-struct fila{
+struct lista{
 	no *inicio;
 	no *fim; 
 };
@@ -59,71 +59,71 @@ no *pop_pilha(pilha *p){
 }
 
 
-fila *create_fila(){
-    fila *F = (fila*)malloc(sizeof(fila));
-    F->inicio = NULL;
-    F->fim = NULL;
-    return F;
+lista *create_lista(){
+    lista *l = (lista*)malloc(sizeof(lista));
+    l->inicio = NULL;
+    l->fim = NULL;
+    return l;
 }
 
 
-int isempty_fila(fila *F){
-	if(F->inicio == NULL) return 1;
+int isempty_lista(lista *l){
+	if(l->inicio == NULL) return 1;
 	else return 0;
 }
 
-void push_fila(fila *F, no *x){
-	if(isempty_fila(F) == 1){
-		F->inicio = x;
-		F->fim = x;
+void push_lista(lista *l, no *x){
+	if(isempty_lista(l) == 1){
+		l->inicio = x;
+		l->fim = x;
 	}
 	else{
-		F->fim->prox = NULL;
-		F->fim = x;
+		l->fim->prox = x;
+		l->fim = x;
 	}
 	x->prox = NULL;
 }
 
-no *pop_fila(fila *F){
-	no *x = F->inicio;
-	F->inicio = x->prox;
-	if(F->inicio == NULL) F->fim = NULL;
+no *pop_lista(lista *l){
+	no *x = l->inicio;
+	l->inicio = x->prox;
+	if(l->inicio == NULL) l->fim = NULL;
 	x->prox = NULL;
 	return x;//
 }
 
-void reverse(fila *F){
+void reverse(lista *l){
 	pilha *P = create_pilha();
 
-	while(isempty_fila(F) == 0){
-		no *x = F->inicio;
-		F->inicio = x->prox;
-		if(F->inicio == NULL) F->fim = NULL;
+	while(isempty_lista(l) == 0){
+		no *x = l->inicio;
+		l->inicio = x->prox;
+		if(l->inicio == NULL) l->fim = NULL;
 		x->prox = P->topo;
 		P->topo = x;
 	}
 	while(isempty_pilha(P) == 0){
 		no *x = P->topo;
 		P->topo = x->prox;
-		if(isempty_fila(F) == 1){
-			F->inicio = x;
-			F->fim = x;
+		if(isempty_lista(l) == 1){
+			l->inicio = x;
+			l->fim = x;
 		}
 		else{
-			F->fim->prox = NULL;
-			F->fim = x;
+			l->fim->prox = x;
+			l->fim = x;
 
 		}
 		x->prox = NULL;		
 	}
 }
 
-int mostrar(fila *F){
-	return F->inicio->id;
+int mostrar(lista *l){
+	return l->inicio->id;
 }
 
 int main(){
-	fila *F = create_fila();
+	lista *l = create_lista();
 
 	int id;
 	scanf("%d", &id);
@@ -140,21 +140,24 @@ int main(){
 	no *aux4 = t4;
 	no *aux5 = t5;
 
-	push_fila(F, aux2);
-	push_fila(F, aux3);
-	push_fila(F, aux4);
-	push_fila(F, aux5);
+	push_lista(l, aux1);
+	push_lista(l, aux2);
+	push_lista(l, aux3);
+	push_lista(l, aux4);
+	push_lista(l, aux5);
 
-	reverse(F);
+	reverse(l);
 
-	printf("%d\n", mostrar(F));
-	pop_fila(F);
-	printf("%d\n", mostrar(F));
-	pop_fila(F);
-	printf("%lu\n", F->inicio->id);
-	pop_fila(F);
-	printf("%lu\n", F->inicio->id);
-	pop_fila(F);
+	printf("%d\n", mostrar(l));
+	pop_lista(l);
+	printf("%d\n", mostrar(l));
+	pop_lista(l);
+	printf("%lu\n", mostrar(l));
+	pop_lista(l);
+	printf("%lu\n", mostrar(l));
+	pop_lista(l);
+	printf("%lu\n", mostrar(l));
+	pop_lista(l);
 
 	return 0;
 }
