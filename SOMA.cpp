@@ -2,13 +2,13 @@
 using namespace std;
 
 int main (){
-    int n = 0, s = 0;
+    int n, soma = 0;
     cin >> n;
     for(int i = 0; i < n; i++){
-        int x = 0;
-        cin >> x;
-        s += x;
+        int aux;
+        cin >> aux;
+        soma += aux;
     }
-    cout << s << endl;
+    cout << soma << endl;
     return 0;
 }
