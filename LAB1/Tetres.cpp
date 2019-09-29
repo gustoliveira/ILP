@@ -1,14 +1,19 @@
+////////////// ERRADA //////////////
+
 #include <iostream>
 #include <stack>
 using namespace std;
+
 bool inverso(char b1[], char b2[]);
+
 int main(){
     int maxAlt, qntBlo, soma = 0;
     string bloco;
     bool flag = false;
-    cin >> qntBlo >> maxAlt;
-
     stack <char> pilha[3];
+
+    cin >> qntBlo >> maxAlt;
+    
     for(int i = 0; i < qntBlo; i++){
         cin >> bloco;
 
@@ -17,7 +22,12 @@ int main(){
             pilha[j].push(c);
         }
 
-        if(i < 1) continue;
+        int flag1 = 0;
+        for(int j = 0; j < 3; j++){
+            if(pilha[j].empty() == true) flag1++;
+        }
+        cout << "DEBUG" << endl;
+        if(flag1 == 3) continue;
 
         char b1[3] = {}, b2[3] = {};
         for(int j = 0; j < 3; j++){
