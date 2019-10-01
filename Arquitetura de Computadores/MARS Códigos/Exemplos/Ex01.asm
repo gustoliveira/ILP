@@ -9,7 +9,8 @@ C:	.word	0
 .text   
 .globl  main            
         
-main:   la	$t0,A		# load address - carrega endereço de A em $t0
+main:   
+	la	$t0,A		# load address - carrega endereço de A em $t0
 	lw	$t0,0($t0)	# load word - lê valor de A para $t0
 	la	$t1,B		# carrega endereço de B em $t1
 	lw	$t1,0($t1)	# lê valor de B para $t1
