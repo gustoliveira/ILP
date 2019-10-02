@@ -3,13 +3,13 @@
 # Escreve strings na tela e conta regressivamente de 100 a 0
 
 .data
-valor:  .word   100
-space:  .asciiz " "
-nl:     .asciiz "\n"
-tb:     .asciiz "\t"
-msg1:   .asciiz "Hello, World\n"
-msg2:   .asciiz "Meu nome é XXXXXXXXX\n"
-msg3:   .asciiz "\nMeu nome ainda é XXXXXXXXX !\n"
+        valor:  .word   100
+        space:  .asciiz " "
+        nl:     .asciiz "\n"
+        tb:     .asciiz "\t"
+        msg1:   .asciiz "Hello, World\n"
+        msg2:   .asciiz "Meu nome é XXXXXXXXX\n"
+        msg3:   .asciiz "\nMeu nome ainda é XXXXXXXXX !\n"
 
 .text
 .globl  main

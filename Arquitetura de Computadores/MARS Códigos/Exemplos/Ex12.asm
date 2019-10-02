@@ -5,7 +5,8 @@
 .data
 fibs:	 .word   0 : 19     # vetor de words com 20 posições
 tamanho: .word  19          # tamanho do vetor
-msg:  	 .asciiz "Quantos números de Fibonacci devem ser gerados (2 <= x <= 19)? "
+msg:  .asciiz "Quantos números de Fibonacci devem ser gerados (2 <= x <= 19)? "
+
 .text
       la   $s0, fibs        # carrega endereço do vetor em $s0
       la   $s5, tamanho     # carrega endereço da variável de tamanho em $s5
@@ -15,8 +16,8 @@ msg:  	 .asciiz "Quantos números de Fibonacci devem ser gerados (2 <= x <= 19)?
 pr:   la   $a0, msg      # carrega mensagem em $a0
       li   $v0, 4        # serviço 4 (print string)
       syscall
-      li   $v0, 5	 # serviço 5 (read integer)
-      syscall            # chama o sistema. O valor lido é colocado em $v0.
+      li   $v0, 5	          # serviço 5 (read integer)
+      syscall               # chama o sistema. O valor lido é colocado em $v0.
       bgt  $v0, $s5, pr     # verifica se valor lido é maior que 19 -- se for, retorna para pr
       ble  $v0, $zero, pr   # verifica se valor lido é menor ou igual a 0 -- se for, retorna para pr
       add  $s5, $v0, $zero  # carrega valor lido em $s5
@@ -44,7 +45,6 @@ loop: lw   $s3, 0($s0)      # lê valor de F[n-2]
       li   $v0, 10          # serviço 10 (exit)
       syscall               # Exit!
 
-###############################################################
 # Subroutina para imprimir os valores
 .data
 space:	.asciiz  " "          # espaço entre números
@@ -67,4 +67,3 @@ out:  lw   $a0, 0($t0)      # carrega o valor (número da série de Fibonacci) a
       addi $t1, $t1, -1     # decrementa contador de laço
       bgtz $t1, out         # salta para out
       jr   $ra              # quando imprimir todos os números, retorna da subrotina para o programa principal
-###############################################################

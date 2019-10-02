@@ -1,9 +1,7 @@
 # UFBA - MATA48 - 2019.1
-###############################################################################################
 # Exemplo de programa em linguagem de montagem do MIPS : Manipulando vetores
 # Autor: Ney Calazans
 # Funcao: Este programa soma o valor de uma constante (const) a cada elemento do vetor array
-###############################################################################################
 
 .data                           # Diretiva para o montador - adiciona o que vem abaixo
         			# a memoria de dados do processador

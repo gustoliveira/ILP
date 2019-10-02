@@ -1,5 +1,4 @@
 # UFBA - MATA48 - 2019.1
-# Exemplo de fatorial - adaptado de MORAES - 23/agosto/2006
 # Programa que calcula o fatorial de um numero inteiro sem sinal.
 
 # Chama a funcao fact().
