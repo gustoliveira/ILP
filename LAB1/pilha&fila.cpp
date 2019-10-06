@@ -21,7 +21,7 @@ int main(){
 		fila1.push(n); //Inserino elementos no fundo da fila
 	}
 	
-	while(!fila.empty()){
+	while(!fila1.empty()){
 		cout << fila1.front() << endl; //Verificando fundo da fila
 		fila1.pop();//Retirando elemento da fila, sempre do inicio
 	}
@@ -30,13 +30,13 @@ int main(){
 	struct pessoa {
 		int s;
 		string nome;
-	];
+	};
 	
 
 	queue <tipo> fila;
 	tipo aux;
 	
-	while(cin>>aux..s>>aux.nome){
+	while(cin>>aux.s>>aux.nome){
 		fila.push(aux);
 	}
 
