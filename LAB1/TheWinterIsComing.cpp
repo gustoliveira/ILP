@@ -35,7 +35,8 @@ int main(){
     for(int i = 0; i < m; i++){
         char neg;
         cin >> neg;
-        if(neg == 'V'){        //LOJA COMPRANDO FENO
+//LOJA COMPRANDO FENO
+        if(neg == 'V'){
             tipo aux;
             cin >> aux.qnt >> aux.validade;
             while(!pilha.empty() and pilha.top().validade <= aux.validade){
@@ -52,7 +53,7 @@ int main(){
                     pilha.push(aux);
             }
         }
-
+//LOJA VENDENDO FENO
         else if(neg == 'C'){
             int vendas;
             cin >> vendas;
