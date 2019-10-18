@@ -82,7 +82,7 @@ no *insert_recursiva(arvore *arv, no *x, no *n){
             }
         }
     }
-    // return n;
+    return n;
 }
 //SOLUÇÃO TEMPORARÁRIA PARA ACESSAR O VALOR DO RETORNO
 int access_insert_recursivo(arvore *arv){
@@ -114,7 +114,6 @@ int insert_iterativa(arvore *arv, no *x){
                 if(aux == NULL){
                     auxPai->dir = x;
                     arv->tam++;
-                    // printf("Debug 2\n");
                     return 1;
                 }
             }
@@ -156,7 +155,7 @@ void PosOrdem(no *x){
 //Declara como destroyTree(arv->x)
 //Utiliza a idea de varrer atraves de PosOrdem
 void destroyTree(no *x){
-    if(x == NULL){
+    if(x != NULL){
         destroyTree(x->esq);
         destroyTree(x->dir);
         free(x);
