@@ -3,16 +3,6 @@
 #include <stdlib.h>
 #include "ArvoreBinaria.h"
 
-struct no{
-    int num;
-    no *esq, *dir, *pai;
-};
-
-struct arvore{
-    no *raizPrincipal;
-    int tam;
-};
-
 //Função para alocar espaço do arvore
 arvore *create_tree(){
     arvore *arv = (arvore*)malloc(sizeof(arvore));
@@ -32,10 +22,10 @@ no *create_no(int num){
 
 // Função para verificar se arvore está vazia
 int isEmpty(arvore *arv){
-    if (arv->raizPrincipal == NULL) {   //Se estiver vazia retorna 1
+    if (arv->raizPrincipal == NULL) {       //Se estiver vazia retorna 1
         return 1;
     }
-    else if(arv->raizPrincipal != NULL){                              //Se houver elemento, retorna 0
+    else if(arv->raizPrincipal != NULL){    //Se houver elemento, retorna 0
         return 0;
     }
     return 0;
@@ -44,7 +34,7 @@ int isEmpty(arvore *arv){
 //Função para realizar busca na Arvore -> BigO(qntElementos)
 //Entra com (arv->raizPrincipal, no *n)
 no *search(no *x, no *n){
-    if(x == NULL || x->num == n->num) {
+    if(x == NULL){
         return x;
     }
     if(x->num < n->num) {
@@ -53,9 +43,8 @@ no *search(no *x, no *n){
     else if(x->num > n->num) {
         return search(x->esq, n);
     }
-    else {
+    else
         return x;
-    }
 }
 
 //CONSERTAR E VER COMO ACESSAR O VALOR DO RETORNO
