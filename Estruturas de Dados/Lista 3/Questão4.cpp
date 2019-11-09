@@ -1,5 +1,6 @@
 #include <iostream>
 #include <stack>
+#include <queue>
 using namespace std;
 
 typedef struct no no;
@@ -36,104 +37,57 @@ no *n_dir(no *n);
 no *n_esq(no *n);
 no *n_pai(no *n);
 int num_arv(no *n);
+void imprimeArvorePorNivel(no *raiz);
 
-// An iterative function to do postorder traversal of a given binary tree
-void iterativePostorder(no* root) {
-    // Check for empty tree
-    if (root == NULL) return;
-    stack<no*> stack;
-
-    do{
-        // Vai para o no mais para a esquerda
-		// cout << "Debug" << endl;
-        while (root != NULL){
-			// Push o nó a direita da raiz e depois a raiz para a fila
-            if (root->dir)
-				stack.push(root->dir);
-			stack.push(root);
-
-            // Raiz agora é a raiz->esq
-            root = root->esq;
-        }
-
-        // Tira o nó da pilha e coloca-o como raiz
-		root = stack.top();
-		stack.pop();
-
-		//Se o nó retirado tem um filho a direito e a
-        // If the popped item has a dir child and the dir child is not
-        // processed yet, then make sure dir child is processed before root
-        if (!stack.empty() && root->dir == root->dir && stack.top() == root->dir){
-            stack.pop();  // remove dir child from stack
-            stack.push(root);  // push root back to stack
-            root = root->dir; // change root so that the dir child is processed next
-        }
-        else{ // Else print root's data and set root as NULL
-			cout << root->num << " ";
-            root = NULL;
-        }
-    }while (!stack.empty());
-}
-// An iterative process to print preorder traversal of Binary tree
-void iterativePreorder(no* root){
-    // Base Case
-    if (root == NULL) return;
-
-    // Create an empty stack and push root to it
-    stack<no *> stack;
-    stack.push(root);
-
-    /* Pop all items one by one. Do following for every popped item
-       a) print it
-       b) push its dir child
-       c) push its 'esq' child
-    Note that dir child is pushed first so that esq is processed first */
-    while (stack.empty() == false){
-        // Pop the top item from stack and print it
-        struct no *no = stack.top();
-        printf ("%d ", no->num);
-        stack.pop();
-
-        // Push dir and esq children of the popped no to stack
-        if (no->dir)
-            stack.push(no->dir);
-        if (no->esq)
-            stack.push(no->esq);
+int isSimilar(no *root1, no* root2){
+    // Check if both the trees are empty
+    if (root1 == NULL && root2 == NULL)
+        return 1;
+    // If any one of the tree is non-empty
+    // and other is empty, return false
+    else if (root1 != NULL && root2 == NULL)
+        return 0;
+    else if (root1 == NULL && root2 != NULL)
+        return 0;
+    else { // Check if current data of both trees equal
+        // and recursively check for left and right subtrees
+        if (isSimilar(root1->esq, root2->esq) == 1 && isSimilar(root1->dir, root2->dir) == 1) return 1;
+        else return 0;
     }
 }
-
-// Driver program to test above functions
 int main(){
-    arvore *arv = create_tree();
+    arvore *arv0 = create_tree();
     int vetor[11] = {15, 5, 18, 16, 25, 2, 1, 3, 7, 13, 9};
+    for(int i = 0; i < 11; i++){
+        insert(arv0, create_no(vetor[i]));
+    }
 
-    no *a0 = create_no(vetor[0]);
-    no *a1 = create_no(vetor[1]);
-    no *a2 = create_no(vetor[2]);
-    no *a3 = create_no(vetor[3]);
-    no *a4 = create_no(vetor[4]);
-    no *a5 = create_no(vetor[5]);
-    no *a6 = create_no(vetor[6]);
-    no *a7 = create_no(vetor[7]);
-    no *a8 = create_no(vetor[8]);
-    no *a9 = create_no(vetor[9]);
-    no *a10 = create_no(vetor[10]);
+    arvore *arv1 = create_tree();
+    int vetor1[11] = {5, 16, 18, 16, 25, 2, 1, 3, 7, 13, 9};
+    for(int i = 0; i < 11; i++){
+        insert(arv1, create_no(vetor1[i]));
+    }
 
-    insert(arv, a0);
-    insert(arv, a1);
-    insert(arv, a2);
-    insert(arv, a3);
-    insert(arv, a4);
-    insert(arv, a5);
-    insert(arv, a6);
-    insert(arv, a7);
-    insert(arv, a8);
-    insert(arv, a9);
-    insert(arv, a10);
-	cout << "PreOrder: ";
-    iterativePreorder(arv->raiz);
-	cout << endl << "PostOrder: ";
-	iterativePostorder(arv->raiz);
+    arvore *arv2 = create_tree();
+    int vetor2[11] = {16, 6, 19, 17, 26, 3, 2, 4, 8, 14, 10};
+    for(int i = 0; i < 11; i++){
+        insert(arv2, create_no(vetor2[i]));
+    }
+
+
+    cout << "Arvore 0: " << endl;
+    imprimeArvorePorNivel(arv0->raiz);
+    cout << "Arvore 1: " << endl;
+    imprimeArvorePorNivel(arv1->raiz);
+    cout << "Arvore 2: " << endl;
+    imprimeArvorePorNivel(arv2->raiz);
+
+    cout << "Teste entre arvore 0 e arvore 1" << endl;
+    if(isSimilar(arv0->raiz, arv1->raiz) == 1) cout <<"Foi" << endl;
+    else cout << "Deu ruim" << endl;
+    cout << "Teste entre arvore 0 e arvore 2" << endl;
+    if(isSimilar(arv0->raiz, arv2->raiz) == 1) cout <<"Foi" << endl;
+    else cout << "Deu ruim" << endl;
 
     return 0;
 }
@@ -395,3 +349,28 @@ no *n_esq(no *n){
 no *n_pai(no *n){
     return n->pai;
 }
+
+void imprimeArvorePorNivel(no *raiz){
+    if (raiz == NULL) {
+        cout << "A arvore está vazia" << endl;
+    }
+    else{
+        queue<no*> fila;
+
+        fila.push(raiz);
+
+        while (fila.empty() == false){
+            for(int i = fila.size(); i > 0; i--){
+                // no *aux = fila.front();
+                cout << fila.front()->num << " ";
+                if (fila.front()->esq != NULL)
+                    fila.push(fila.front()->esq);
+                if (fila.front()->dir != NULL)
+                    fila.push(fila.front()->dir);
+                fila.pop();
+            }
+            cout << endl;
+        }
+    }
+}
+

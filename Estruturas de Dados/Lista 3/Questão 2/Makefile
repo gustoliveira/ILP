@@ -1,6 +1,0 @@
-all:
-	@g++ QUestão2.cpp
-	@./a.out
-
-clear:
-	@rm -rf a.out
