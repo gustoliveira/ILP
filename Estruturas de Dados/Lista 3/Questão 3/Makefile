@@ -1,5 +1,5 @@
 all:
-	@g++ QUestão2.cpp
+	@g++ Questão3.cpp
 	@./a.out
 
 clear:

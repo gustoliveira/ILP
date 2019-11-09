@@ -1,22 +1,142 @@
-//Gustavo de Oliveira Ferreira
-#include <stdio.h>
-#include <stdlib.h>
-#include "ArvoreBinaria.h"
+#include <iostream>
+#include <stack>
+using namespace std;
 
 typedef struct no no;
 typedef struct arvore arvore;
-
-//Struct tipo no
 struct no{
-    int num; //Conteudo
+    int num;
     no *esq, *dir, *pai;
 };
 
-//Struct tipo arvore
 struct arvore{
     no *raiz;
-    int tam; //Quantos elementos a arvore contem
+    int tam;
 };
+arvore *create_tree();
+no *create_no(int num);
+int isEmpty(arvore *arv);
+no *search(no *x, no *n);
+unsigned long int size(arvore *arv);
+no *insert_recursiva(arvore *arv, no *x, no *n);
+int insert_iterativa(arvore *arv, no *x);
+no *insert(arvore *arv, no *z);
+no *remover_abb(arvore *t, no *z);
+void PreOrdem(no *x);
+void InOrdem(no *x);
+void PosOrdem(no *x);
+void destroyTree(arvore *arv, no *x);
+no *raiz(arvore *arv);
+no *minimo(no *x);
+no *maximo(no *x );
+no *sucessor(no *x);
+no *predecessor(no *x);
+int altura(no *n);
+no *n_dir(no *n);
+no *n_esq(no *n);
+no *n_pai(no *n);
+int num_arv(no *n);
+
+// An iterative function to do postorder traversal of a given binary tree
+void iterativePostorder(no* root) {
+    // Check for empty tree
+    if (root == NULL) return;
+    stack<no*> stack;
+
+    do{
+        // Vai para o no mais para a esquerda
+		// cout << "Debug" << endl;
+        while (root != NULL){
+			// Push o nó a direita da raiz e depois a raiz para a fila
+            if (root->dir)
+				stack.push(root->dir);
+			stack.push(root);
+
+            // Raiz agora é a raiz->esq
+            root = root->esq;
+        }
+
+        // Tira o nó da pilha e coloca-o como raiz
+		root = stack.top();
+		stack.pop();
+
+		//Se o nó retirado tem um filho a direito e a
+        // If the popped item has a dir child and the dir child is not
+        // processed yet, then make sure dir child is processed before root
+        if (!stack.empty() && root->dir == root->dir && stack.top() == root->dir){
+            stack.pop();  // remove dir child from stack
+            stack.push(root);  // push root back to stack
+            root = root->dir; // change root so that the dir child is processed next
+        }
+        else{ // Else print root's data and set root as NULL
+			cout << root->num << " ";
+            root = NULL;
+        }
+    }while (!stack.empty());
+}
+// An iterative process to print preorder traversal of Binary tree
+void iterativePreorder(no* root){
+    // Base Case
+    if (root == NULL) return;
+
+    // Create an empty stack and push root to it
+    stack<no *> stack;
+    stack.push(root);
+
+    /* Pop all items one by one. Do following for every popped item
+       a) print it
+       b) push its dir child
+       c) push its 'esq' child
+    Note that dir child is pushed first so that esq is processed first */
+    while (stack.empty() == false){
+        // Pop the top item from stack and print it
+        struct no *no = stack.top();
+        printf ("%d ", no->num);
+        stack.pop();
+
+        // Push dir and esq children of the popped no to stack
+        if (no->dir)
+            stack.push(no->dir);
+        if (no->esq)
+            stack.push(no->esq);
+    }
+}
+
+// Driver program to test above functions
+int main(){
+    arvore *arv = create_tree();
+    int vetor[11] = {15, 5, 18, 16, 25, 2, 1, 3, 7, 13, 9};
+
+    no *a0 = create_no(vetor[0]);
+    no *a1 = create_no(vetor[1]);
+    no *a2 = create_no(vetor[2]);
+    no *a3 = create_no(vetor[3]);
+    no *a4 = create_no(vetor[4]);
+    no *a5 = create_no(vetor[5]);
+    no *a6 = create_no(vetor[6]);
+    no *a7 = create_no(vetor[7]);
+    no *a8 = create_no(vetor[8]);
+    no *a9 = create_no(vetor[9]);
+    no *a10 = create_no(vetor[10]);
+
+    insert(arv, a0);
+    insert(arv, a1);
+    insert(arv, a2);
+    insert(arv, a3);
+    insert(arv, a4);
+    insert(arv, a5);
+    insert(arv, a6);
+    insert(arv, a7);
+    insert(arv, a8);
+    insert(arv, a9);
+    insert(arv, a10);
+	cout << "PreOrder: ";
+    iterativePreorder(arv->raiz);
+	cout << endl << "PostOrder: ";
+	iterativePostorder(arv->raiz);
+
+    return 0;
+}
 
 //Função para alocar espaço do arvore
 arvore *create_tree(){
