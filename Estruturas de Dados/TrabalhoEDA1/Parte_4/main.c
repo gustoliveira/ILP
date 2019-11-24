@@ -5,7 +5,7 @@
 
 int main(){
     arvore *arv = create_tree();
-    int vetor[10] = {0, 2, 4, 5, 7, 8, 9, 3, 1, 6};
+    int vetor[8] = {10, 15, 13, 20, 14, 19, 21, 16};
 
     no *a0 = create_no(vetor[0]);
     no *a1 = create_no(vetor[1]);
@@ -15,8 +15,6 @@ int main(){
     no *a5 = create_no(vetor[5]);
     no *a6 = create_no(vetor[6]);
     no *a7 = create_no(vetor[7]);
-    no *a8 = create_no(vetor[8]);
-    no *a9 = create_no(vetor[9]);
 
     insert(arv, a0);
     insert(arv, a1);
@@ -26,8 +24,6 @@ int main(){
     insert(arv, a5);
     insert(arv, a6);
     insert(arv, a7);
-    insert(arv, a8);
-    insert(arv, a9);
 
 
     printf("Tamanho: %ld\nPreOrdem: ", size(arv));
@@ -42,9 +38,7 @@ int main(){
 
 
     printf("Depois de remover alguns nós...\n");
-    remover_abb(arv, a0);
-    remover_abb(arv, a1);
-    remover_abb(arv, a2);
+    remover_abb(arv, a7);
 
     printf("Tamanho: %ld\nPreOrdem: ", size(arv));
     PreOrdem(raiz(arv));
@@ -56,7 +50,7 @@ int main(){
 
     printf("Pré destruição: %d\n", isEmpty(arv));
     destroyTree(arv, raiz(arv));
-    printf("Pos Desctruição: %d\n", isEmpty(arv));
+    printf("Pós destruição: %d\n", isEmpty(arv));
     free(arv);
     InOrdem(raiz(arv));
 

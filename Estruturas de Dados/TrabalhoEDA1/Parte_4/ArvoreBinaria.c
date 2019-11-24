@@ -144,7 +144,7 @@ no *insert(arvore *arv, no *z){
 }
 
 void transplante(arvore *T, no *u, no *v){
-    if(u->pai == NULL) T->raiz = v;
+    if(u->pai == raiz(T)) T->raiz = v;
     else if(u == u->pai->esq) u->pai->esq = v;
     else u->pai->dir = v;
 
