@@ -78,28 +78,29 @@ void iterativePostorder(no* root) {
 // An iterative process to print preorder traversal of Binary tree
 void iterativePreorder(no* root){
     // Base Case
-    if (root == NULL) return;
+    if (root == NULL) cout << "A arvore está vazia" << endl;
+    else{
+        // Create an empty stack and push root to it
+        stack<no *> stack;
+        stack.push(root);
 
-    // Create an empty stack and push root to it
-    stack<no *> stack;
-    stack.push(root);
+        /* Pop all items one by one. Do following for every popped item
+        a) print it
+        b) push its dir child
+        c) push its 'esq' child
+        Note that dir child is pushed first so that esq is processed first */
+        while (stack.empty() == false){
+            // Pop the top item from stack and print it
+            struct no *aux = stack.top();
+            printf ("%d ", aux->num);
+            stack.pop();
 
-    /* Pop all items one by one. Do following for every popped item
-       a) print it
-       b) push its dir child
-       c) push its 'esq' child
-    Note that dir child is pushed first so that esq is processed first */
-    while (stack.empty() == false){
-        // Pop the top item from stack and print it
-        struct no *no = stack.top();
-        printf ("%d ", no->num);
-        stack.pop();
-
-        // Push dir and esq children of the popped no to stack
-        if (no->dir)
-            stack.push(no->dir);
-        if (no->esq)
-            stack.push(no->esq);
+            // Push dir and esq children of the popped no to stack
+            if (aux->dir != NULL)
+                stack.push(aux->dir);
+            if (aux->esq != NULL)
+                stack.push(aux->esq);
+        }
     }
 }
 
