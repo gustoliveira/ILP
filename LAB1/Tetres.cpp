@@ -1,66 +1,53 @@
-////////////// ERRADA //////////////
-
 #include <iostream>
 #include <stack>
 using namespace std;
 
-bool inverso(char b1[], char b2[]);
-
-int main(){
-    int maxAlt, qntBlo, soma = 0;
-    string bloco;
-    bool flag = false;
-    stack <char> pilha[3];
-
-    cin >> qntBlo >> maxAlt;
-    
-    for(int i = 0; i < qntBlo; i++){
-        cin >> bloco;
-
-        for(int j = 0; j < 3; j++){
-            char c = bloco[j];
-            pilha[j].push(c);
-        }
-
-        int flag1 = 0;
-        for(int j = 0; j < 3; j++){
-            if(pilha[j].empty() == true) flag1++;
-        }
-        cout << "DEBUG" << endl;
-        if(flag1 == 3) continue;
-
-        char b1[3] = {}, b2[3] = {};
-        for(int j = 0; j < 3; j++){
-            b1[j] = pilha[j].top();
-            pilha[j].pop();
-        }
-        for(int j = 0; j < 3; j++){
-            b2[j] = pilha[j].top();
-            pilha[j].pop();
-        }
-
-        if(inverso(b1, b2)){
-            soma += 10;
-            for(int j = 0; j < 3; j++){
-                char c = b2[j];
-                pilha[j].push(j);
-            }
-        }
-
-        if(pilha[0].size() >= maxAlt) flag = true;
+string inverter (string normal){
+    string inver = "000";
+    for (int i = 0; i < normal.length(); i++) {
+        if (normal[i] == '1') inver[i] = '0';
+        else inver[i] = '1';
     }
-
-    if(flag == true) cout << "game over" << endl;
-    else cout << soma << endl;
-
-    return 0;
+    return inver;
 }
 
+int main () {
+    int n, a;
+    int cont = 0, go = 0;
+    string x;
+    stack<string> pilha;
 
-bool inverso(char b1[], char b2[]){
-    int soma = 0;
-    for(int i = 0; i < 3; i++){
-        if(b1[i] != b2[i]) soma++;
+    cin >> n >> a;
+    for (int i = 0; i < n; i++) {
+        cin >> x;
+        if (pilha.empty()) {
+            pilha.push(x);
+            if (pilha.size() == a) {
+                go = 1;
+                break;
+            }
+        }
+        else {
+            if (pilha.top() == inverter(x)) {
+                if (pilha.size() == a) {
+                    go = 1;
+                    break;
+                }
+                pilha.pop();
+                cont += 10;
+            }
+            else {
+                pilha.push(x);
+                if (pilha.size() == a) {
+                    go = 1;
+                    break;
+                }
+            }
+        }
     }
-    return(soma == 3);
+
+    if (go == 1) cout << "game over" << endl;
+    else cout << cont << endl;
+
+    return 0;
 }
