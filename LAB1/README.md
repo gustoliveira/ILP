@@ -1,13 +1,7 @@
-## Laboratório de Programação I
+### Descrição:
+Aulas de Laboratório de Programação I ministradas pelo Professor Rubisley de Paula no semestre 2019.1 e avaliadas atraves de duas provas e listas que foram submetidas pelo avaliador online **[JUDE](http://200.128.51.30)**.
 
-**Descrição:**
-
-Aulas de Laboratório de Programação I ministradas pelo Professor Rubisley de Paula no semestre 2019.1
-
-**[Link JUDE](http://200.128.51.30)**
-
-**Conteudos**
-
+### Conteudos:
 **_Prova 1:_**
 * Struct
 * Ponteiros
