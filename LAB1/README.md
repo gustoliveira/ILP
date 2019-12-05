@@ -1,5 +1,5 @@
 ### Descrição:
-Aulas de Laboratório de Programação I, ministradas pelo Professor Rubisley de Paula no semestre 2019.1 e avaliadas através de duas provas e listas que foram submetidas no **[JUDE](http://200.128.51.30)**.
+Aulas de Laboratório de Programação I, ministradas pelo Professor Rubisley de Paula no semestre 2019.2 e avaliadas através de duas provas e listas que foram submetidas no **[JUDE](http://200.128.51.30)**.
 
 ### Conteudos:
 **_Prova 1:_**
