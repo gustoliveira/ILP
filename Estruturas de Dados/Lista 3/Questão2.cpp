@@ -1,5 +1,6 @@
 #include <iostream>
 #include <stack>
+#include <queue>
 using namespace std;
 
 typedef struct no no;
@@ -37,12 +38,49 @@ no *n_esq(no *n);
 no *n_pai(no *n);
 int num_arv(no *n);
 
+void printPilha(stack<no*> P, int i){
+    stack<no*> aux;
+    cout << "Iteração maior " << i << ": ";
+    while(!(P).empty()){
+        no *aux1 = (P).top();
+        (P).pop();
+        aux.push(aux1);
+        cout << aux1->num << ' ';
+    }
+    cout << endl;
+    while(!aux.empty()){
+        (P).push(aux.top());
+        aux.pop();
+    }
+}
+
+void iterativeInOrder(no *x){
+    if(x == NULL){
+        cout << "Arvore Vazia" << endl;
+    }
+    else{
+        stack<no*> stack;
+        while(x != NULL || !stack.empty()){
+            while(x != NULL){
+                stack.push(x);
+                x = x->esq;
+            }
+            x = stack.top();
+            stack.pop();
+            cout << x->num << ' ';
+            x = x->dir;
+        }
+    }
+    cout << endl;
+}
+
 // An iterative function to do postorder traversal of a given binary tree
 void iterativePostorder(no* root) {
     // Check for empty tree
     if (root == NULL) return;
     stack<no*> stack;
-
+    queue<no*> fila;
+    int i = 0;
     do{
         // Vai para o no mais para a esquerda
 		// cout << "Debug" << endl;
@@ -63,7 +101,7 @@ void iterativePostorder(no* root) {
 		//Se o nó retirado tem um filho a direito e a
         // If the popped item has a dir child and the dir child is not
         // processed yet, then make sure dir child is processed before root
-        if (!stack.empty() && root->dir == root->dir && stack.top() == root->dir){
+        if (!stack.empty() && root->dir != NULL && stack.top() == root->dir){
             stack.pop();  // remove dir child from stack
             stack.push(root);  // push root back to stack
             root = root->dir; // change root so that the dir child is processed next
@@ -75,6 +113,7 @@ void iterativePostorder(no* root) {
     }while (!stack.empty());
     cout << "\n";
 }
+
 // An iterative process to print preorder traversal of Binary tree
 void iterativePreorder(no* root){
     // Base Case
@@ -136,7 +175,8 @@ int main(){
     iterativePreorder(arv->raiz);
 	cout << endl << "PostOrder: ";
 	iterativePostorder(arv->raiz);
-
+    cout << "InOrder: ";
+    iterativeInOrder(arv->raiz);
     return 0;
 }
 
