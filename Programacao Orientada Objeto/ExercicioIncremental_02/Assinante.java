@@ -48,8 +48,7 @@ public class Assinante {
         this.telefone = telefone;
     }
 
-
-    public void consultaAssinante(String identificador) {
+    public String consultaAssinante(String identificador) {
 
         char[] identificadorChar = identificador.toCharArray();
         boolean flag = true;
@@ -63,20 +62,18 @@ public class Assinante {
 
         if(flag){
             if(identificador.equals(this.telefone)){
-                System.out.println("De acordo com o número dado, estas são as informações sobre o assinante:");
-                System.out.println("Nome: " + this.nome + "\nCPF: " + this.cpf + "\nEndereço: " + this.endereco + "\nTelefone: " + this.telefone);
+                return "De acordo com o número dado, estas são as informações sobre o assinante:\n Nome: " + this.nome + "\nCPF: " + this.cpf + "\nEndereço: " + this.endereco + "\nTelefone: " + this.telefone;
             }
             else {
-                System.out.println("Não há nenhum assinante com este número");
+                return "Não há nenhum assinante com este número";
             }
         }
         else {
             if(identificador.equals(this.nome)){
-                System.out.println("De acordo com o nome dado, estas são as informações sobre o assinante:");
-                System.out.println("Nome: " + this.nome + "\nCPF: " + this.cpf + "\nEndereço: " + this.endereco + "\nTelefone: " + this.telefone);
+                return "De acordo com o nome dado, estas são as informações sobre o assinante:\n Nome: " + this.nome + "\nCPF: " + this.cpf + "\nEndereço: " + this.endereco + "\nTelefone: " + this.telefone;
                 }
             else {
-                System.out.println("Não há nenhum assinante com este nome");
+                return "Não há nenhum assinante com este nome";
             }
         }
 
